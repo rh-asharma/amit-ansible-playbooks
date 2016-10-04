@@ -2,34 +2,10 @@
   name: This is a play within a playbook
   become: yes
 
-  vars:
-    httpd_packages:
-      - httpd
-      - mod_wsgi
-      - libselinux-python
-      - firewalld
-
   tasks:
-    - name: install packages
-      yum:
-        name: "{{ item }}"
-        state: present
-      with_items: "{{ httpd_packages }}"
+    - name: register the server
+      command: subscription-manager register --username "{{ rh_username }}" --password "{{ rh_password }}" --force
 
-    - name: stop firewalld
-      service:
-        name: firewalld
-        state: stopped
-
-    - name: copy index.html
-      copy:
-        src: files/index.html
-        dest: /var/www/html/
-      notify: restart apache
-
-  handlers:
-    - name: restart apache
-      service:
-        name: httpd
-        state: restarted
-        enabled: yes
+    - name: attach to pool
+      command: subscription-manager attach --pool="{{ rh_poolid }}"
+      register: register_result
