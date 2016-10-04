@@ -8,4 +8,10 @@
 
     - name: attach to pool
       command: subscription-manager attach --pool="{{ rh_poolid }}"
+      
+    - name: Disable all repos
+      command: subscription-manager  repos --disable="*"
+     
+    - name: Enable rhel7 repos
+      command: subscription-manager repos --enable="rhel-7-server-rpms"  --enable="rhel-7-server-extras-rpms"
       register: register_result
