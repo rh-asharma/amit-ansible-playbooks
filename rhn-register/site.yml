@@ -1,5 +1,5 @@
 - hosts: all
-  name: This is a play within a playbook
+  name: This is a Playbook to register host to RHN
   become: yes
 
   tasks:
