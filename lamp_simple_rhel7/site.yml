@@ -3,21 +3,28 @@
 
 - name: apply common configuration to all nodes
   hosts: all
+  remote_user: vagrant
   become: yes
- # roles:
- #   - common
+  become_method: sudo
+
+  roles:
+    - common
 
 - name: configure and deploy the webservers and application code
-  hosts: all
+  hosts: webservers
+  remote_user: vagrant
   become: yes
+  become_method: sudo
 #  ignore_errors: yes
 
   roles:
     - web
 
 - name: deploy MySQL and configure the databases
-  hosts: all
+  hosts: dbservers
+  remote_user: vagrant
   become: yes
+  become_method: sudo
 
   roles:
     - db
