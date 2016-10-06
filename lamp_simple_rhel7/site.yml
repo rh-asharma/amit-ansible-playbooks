@@ -6,11 +6,11 @@
   become: yes
   become_method: sudo
 
-  roles:
-    - common
+ # roles:
+ #   - common
 
 - name: configure and deploy the webservers and application code
-  hosts: webservers
+#  hosts: webservers
   become: yes
   become_method: sudo
 #  ignore_errors: yes
@@ -19,7 +19,7 @@
     - web
 
 - name: deploy MySQL and configure the databases
-  hosts: dbservers
+#  hosts: dbservers
   become: yes
   become_method: sudo
 
