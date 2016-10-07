@@ -10,7 +10,7 @@
   #  - common
 
 - name: configure and deploy the webservers and application code
-  hosts: webservers
+  hosts: /managed/group/webservers
   become: yes
   become_method: sudo
 #  ignore_errors: yes
@@ -19,7 +19,7 @@
     - web
 
 - name: deploy MySQL and configure the databases
-  hosts: dbservers
+  hosts: /managed/group/dbservers
   become: yes
   become_method: sudo
 
