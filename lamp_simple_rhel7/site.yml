@@ -8,7 +8,10 @@
 
   #roles:
   #  - common
-
+- hosts: all
+  become: yes
+  tasks: []
+  
 - name: configure and deploy the webservers and application code
   hosts: /managed/group/webservers
   become: yes
