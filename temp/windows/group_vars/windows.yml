@@ -1,0 +1,5 @@
+ansible_ssh_user: mailmyamit
+ansible_ssh_pass: C)hAQdh/F*$vR#s
+ansible_ssh_port: 5985
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: ignore
